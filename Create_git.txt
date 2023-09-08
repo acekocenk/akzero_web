@@ -1,0 +1,6 @@
+rd .git /S/Q
+git init
+git add .
+git commit -m "My first Commit"
+git remote add origin  https://github.com/acekocenk/akzero_web.git
+git push -u origin master
