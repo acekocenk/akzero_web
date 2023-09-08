@@ -8,6 +8,7 @@
             <?= csrf_field(); ?>
             <input type="hidden" id="userid" name="userid" value="<?= $user->userid; ?>">
             <input type="hidden" name="userimgLama" value="<?= $user->userimg; ?>">
+            <input type="hidden" name="groupold" value="<?= $user->groupsid; ?>">
             <div class="row">
                 <div class="col-lg-3">
                 </div>
@@ -36,48 +37,48 @@
                         <label for="fullname" class="control-label col-sm-4" align="right">Full Name</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control form-control-sm" id="userfullname" name="userfullname" value="<?= $user->fullname; ?>">
-                            <!-- <div class=" invalid-feedback" id="errorCode"> -->
+                            <div class=" invalid-feedback" id="errorFullName">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="email" class="control-label col-sm-4" align="right">Email</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-sm" id="useremail" name="useremail" value="<?= $user->email; ?>" readonly>
-                        <!-- <div class=" invalid-feedback" id="errorCode"> -->
+                    <div class="row mb-3">
+                        <label for="email" class="control-label col-sm-4" align="right">Email</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="useremail" name="useremail" value="<?= $user->email; ?>" readonly>
+                            <div class=" invalid-feedback" id="errorCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="username" class="control-label col-sm-4" align="right">Username</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="userusername" name="userusername" value="<?= $user->username; ?>" readonly>
+                            <div class=" invalid-feedback" id="errorCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="group" class="control-label col-sm-4" align="right">Group</label>
+                        <div class="col-sm-8">
+                            <select class="form-control form-control-sm" aria-label="Default select example" id="group" name="group">
+                                <option selected>Open this select</option>
+                                <?php foreach ($groups as $t) : ?>
+                                    <option value="<?= $t->id; ?>" <?= $t->id == $user->groupsid ? "selected" : null; ?>><?= $t->name; ?> </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="box-footer" align="right">
+                        <button type="submit" class="btn btn-primary" id="btnUpdate"><i class="fa-solid fa-check"></i>&nbsp;Update</button>
+                        <button class="btn btn-danger" id="btnCancel"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</button>
+                        <!-- <input type="submit" name="submit" class="btn btn-primary" value="Register Data">
+                            <a href="../mhs/mhs_home.php" class="btn btn-danger">Batal</a> -->
+                    </div>
+                    <div class="col-lg-3">
                     </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label for="username" class="control-label col-sm-4" align="right">Username</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control form-control-sm" id="userusername" name="userusername" value="<?= $user->username; ?>" readonly>
-                    <!-- <div class=" invalid-feedback" id="errorCode"> -->
-                </div>
-            </div>
+        </form>
     </div>
-    <div class="row mb-3">
-        <label for="group" class="control-label col-sm-4" align="right">Group</label>
-        <div class="col-sm-8">
-            <select class="form-control form-control-sm" aria-label="Default select example" id="group" name="group">
-                <option selected>Open this select</option>
-                <?php foreach ($groups as $t) : ?>
-                    <option value="<?= $t->id; ?>" <?= $t->id == $user->groupsid ? "selected" : null; ?>><?= $t->name; ?> </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-    </div>
-    <div class="box-footer" align="right">
-        <button type="submit" class="btn btn-primary" id="btnUpdate"><i class="fa-solid fa-check"></i>&nbsp;Update</button>
-        <button class="btn btn-danger" id="btnCancel"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</button>
-        <!-- <input type="submit" name="submit" class="btn btn-primary" value="Register Data">
-                            <a href="../mhs/mhs_home.php" class="btn btn-danger">Batal</a> -->
-    </div>
-    <div class="col-lg-3">
-    </div>
-</div>
-</form>
-</div>
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -100,7 +101,7 @@
         }
     }
 
-    function Update() {
+    function update() {
         $('#frmEditUser').submit(function(e) {
             e.preventDefault();
             $.ajax({

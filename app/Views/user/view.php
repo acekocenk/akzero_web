@@ -16,6 +16,7 @@
                     <tr>
                         <th>#</th>
                         <th>Photo</th>
+                        <th>Fullname</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Role</th>

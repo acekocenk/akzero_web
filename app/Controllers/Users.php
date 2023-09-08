@@ -61,6 +61,7 @@ class Users extends BaseController
                 $sub_array = array();
                 $sub_array[] = $no++;
                 $sub_array[] = '<img src="' . base_url() . '/img/users/' . $row->userimg . '" alt="" class="sampul">';
+                $sub_array[] = $row->fullname;
                 $sub_array[] = $row->username;
                 $sub_array[] = $row->email;
                 $sub_array[] = $row->name;
@@ -99,47 +100,65 @@ class Users extends BaseController
     public function update()
     {
         if ($this->request->isAJAX()) {
+            // $valid = $this->validate([
+            //     'userimg' => [
+            //         'rules' => 'max_size[userimg,4096]|is_image[userimg]|mime_in[userimg,image/jpg,image/jpeg,image/png,image/svg]',
+            //         'errors' => [
+            //             'max_size' => 'Ukuran maksimal img 4MB.',
+            //             'is_image' => 'File terbaca bukan gambar.',
+            //             'mime_is' => 'tipe gambar harus jpg, jpeg, png, svg.'
+            //         ]
+            //     ]
+            // ]);
+            // if (!$valid) {
+            //     $msg = [
+            //         'error' => [
+            //             'userimg' => validation_show_error('userimg'),
+            //         ]
+            //     ];
+            // } else {
+            $groupid = $this->request->getVar('group');
+            $groupidold = $this->request->getVar('groupold');
+            $userid = $this->request->getVar('userid');
 
-            // $slug = url_title($this->request->getVar('username'), '-', true);
-            $valid = $this->validate([
-                'userimg' => [
-                    'rules' => 'max_size[userimg,4096]|is_image[userimg]|mime_in[userimg,image/jpg,image/jpeg,image/png]',
-                    'errors' => [
-                        'max_size' => 'Ukuran maksimal img 4MB.',
-                        'is_image' => 'File terbaca bukan gambar.',
-                        'mime_is' => 'tipe gambar harus jpg, jpeg, png.'
-                    ]
-                ]
-            ]);
-            if (!$valid) {
-                $msg = [
-                    'error' => [
-                        'bomcode' => validation_show_error('bomcode'),
-                        'bomname' => validation_show_error('bomname'),
-                        'bomimg' => validation_show_error('bomimg'),
-                    ]
-                ];
+            $filePicture = $this->request->getFile('userimg');
+
+            if ($filePicture->getError() == 4) {
+                $namaPicture = $this->request->getVar('userimgLama');
             } else {
-                $groupid = $this->request->getVar('group');
-                $userid = $this->request->getVar('userid');
-                $this->userModel->save(
-                    [
-                        'id' => $this->request->getVar('userid'),
-                        'fullname' => $this->request->getVar('fullname'),
-                        'userimg' => $this->request->getVar('userimg')
-                    ]
-                );
-                $this->GroupModel->removeUserFromGroup($userid, $groupid);
-                $this->GroupModel->addUserToGroup($userid, $groupid);
-                $msg = [
-                    'sukses' => $this->request->getVar('username') . ' Update successfully'
-                ];
-                echo json_encode($msg);
+                if ($this->request->getVar('userimgLama') != "default.svg") {
+                    unlink('img/users/' . $this->request->getVar('userimgLama'));
+                }
+                $namaPicture = $filePicture->getRandomName();
+                $filePicture->move('img/users', $namaPicture);
             }
+
+            $data = [
+                'fullname' => $this->request->getVar('userfullname'),
+                'userimg' => $namaPicture
+            ];
+            $this->userModel->updateUser($data, $userid);
+
+            // $this->userModel->save(
+            //     [
+            //         'id' => $userid,
+            //         'fullname' => $this->request->getVar('fullname'),
+            //         'userimg' => $namaPicture
+            //     ]
+            // );
+
+            $this->GroupModel->removeUserFromGroup($userid, $groupidold);
+            $this->GroupModel->addUserToGroup($userid, $groupid);
+            $msg = [
+                'sukses' => $this->request->getVar('username') . ' Update successfully'
+            ];
+            echo json_encode($msg);
+            // }
         } else {
             throw new \CodeIgniter\Exceptions\PageNotFoundException(' Not Found');
         }
     }
+
     public function delete()
     {
         if ($this->request->isAJAX()) {
