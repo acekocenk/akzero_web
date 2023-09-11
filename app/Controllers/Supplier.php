@@ -22,7 +22,7 @@ class Supplier extends BaseController
             'title' => 'List Supplier',
             'supplier' => $this->supplierModel->supplierList()
         ];
-        return view('masterinv/supplier/index', $data);
+        return view('supplier/index', $data);
     }
 
     public function loaddata()
@@ -33,7 +33,7 @@ class Supplier extends BaseController
                 'supplier' => $this->supplierModel->supplierList()
             ];
             $msg = [
-                'view' => view('masterinv/supplier/view', $data)
+                'view' => view('supplier/view', $data)
             ];
             echo json_encode($msg);
         } else {
@@ -49,7 +49,7 @@ class Supplier extends BaseController
                 'abipro' => $this->abiproModel->hutimasList()
             ];
             $msg = [
-                'create' => view('masterinv/supplier/create', $data)
+                'create' => view('supplier/create', $data)
             ];
             echo json_encode($msg);
         } else {
@@ -122,7 +122,7 @@ class Supplier extends BaseController
                 'abipro' => $this->abiproModel->hutimasList()
             ];
             $msg = [
-                'edit' => view('masterinv/supplier/edit', $data)
+                'edit' => view('supplier/edit', $data)
             ];
             echo json_encode($msg);
         } else {
