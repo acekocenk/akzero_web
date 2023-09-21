@@ -68,18 +68,18 @@ class Supplier extends BaseController
                         'is_unique' => 'The Supplier field must contain a unique value.'
                     ]
                 ],
-                'telp' => [
-                    'rules' => 'regex_match[/^[0-9]/]',
-                    // 'errors' => [
-                    //     'valid_email' => 'The Email field must contain a valid email address.'
-                    // ]
-                ],
-                'email' => [
-                    'rules' => 'valid_email',
-                    'errors' => [
-                        'valid_email' => 'The Email field must contain a valid email address.'
-                    ]
-                ]
+                // 'telp' => [
+                //     'rules' => 'regex_match[/^[0-9]/]',
+                //     // 'errors' => [
+                //     //     'valid_email' => 'The Email field must contain a valid email address.'
+                //     // ]
+                // ],
+                // 'email' => [
+                //     'rules' => 'valid_email',
+                //     'errors' => [
+                //         'valid_email' => 'The Email field must contain a valid email address.'
+                //     ]
+                // ],
             ]);
             if (!$valid) {
                 $msg = [
@@ -150,18 +150,18 @@ class Supplier extends BaseController
                         'max_length' => '{field} maksimal 4 huruf.'
                     ]
                 ],
-                'telp' => [
-                    'rules' => 'regex_match[/^[0-9]/]',
-                    // 'errors' => [
-                    //     'valid_email' => 'The Email field must contain a valid email address.'
-                    // ]
-                ],
-                'email' => [
-                    'rules' => 'valid_email',
-                    'errors' => [
-                        'valid_email' => 'The Email field must contain a valid email address.'
-                    ]
-                ]
+                // 'telp' => [
+                //     'rules' => 'regex_match[/^[0-9]/]',
+                //     // 'errors' => [
+                //     //     'valid_email' => 'The Email field must contain a valid email address.'
+                //     // ]
+                // ],
+                // 'email' => [
+                //     'rules' => 'valid_email',
+                //     'errors' => [
+                //         'valid_email' => 'The Email field must contain a valid email address.'
+                //     ]
+                //     ],
             ]);
             if (!$valid) {
                 $msg = [

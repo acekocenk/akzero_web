@@ -23,7 +23,7 @@
                         <div class="row mb-3">
                             <label for="acccode" class="control-label col-sm-4" align="right">Acc Code</label>
                             <div class="col-sm-8">
-                                <select class="form-select" aria-label="Default select example" id="acccode" name="acccode">
+                                <select class="custom-select" aria-label="Default select example" id="acccode" name="acccode">
                                     <option selected>Open this select menu</option>
                                     <?php foreach ($abipro as $t) : ?>
                                         <option value="<?= $t['H_KODE']; ?>" <?= $t['H_KODE'] == $supplier['acccode'] ? "selected" : null; ?>><?= $t['H_NAMA']; ?> </option>
