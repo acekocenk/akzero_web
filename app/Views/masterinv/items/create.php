@@ -57,7 +57,7 @@
                     <div class="row mb-3">
                         <label for="itemsize" class="control-label col-sm-4" align="right">item Size</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemsize" name="itemsize" value="0000000" minlength="7" maxlength="7" onchange="createitems()">
+                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemsize" name="itemsize" value="0000000" maxlength="7" onchange="createitems()">
                             <div class="invalid-feedback" id="errorSize"></div>
                         </div>
                     </div>
@@ -76,14 +76,14 @@
                     <div class="row mb-3">
                         <label for="itemcode" class="control-label col-sm-4" align="right">item Code</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemcode" name="itemcode" value="XXX" autofocus>
+                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemcode" name="itemcode" value="XXX" readonly autofocus>
                             <div class="invalid-feedback" id="errorCode"></div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="itemname" class="control-label col-sm-4" align="right">item Name</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemname" name="itemname" value="XXX">
+                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemname" name="itemname" value="XXX" readonly>
                             <div class="invalid-feedback" id="errorName"></div>
                         </div>
                     </div>
@@ -190,6 +190,14 @@
                             $('#errorName').html('');
                         }
 
+                        if (response.error.itemsize) {
+                            $('#itemsize').addClass('is-invalid');
+                            $('#errorSize').html(response.error.itemsize);
+                        } else {
+                            $('#itemsize').removeClass('is-invalid');
+                            $('#errorSize').html('');
+                        }
+
                         if (response.error.itemimg) {
                             $('#itemimg').addClass('is-invalid');
                             $('#errorImg').html(response.error.itemimg);
@@ -229,7 +237,7 @@
                     viewdata();
                     let timerInterval
                     Swal.fire({
-                        title: 'Load Bill Of Material',
+                        title: 'Load Items',
                         timer: 1000,
                         timerProgressBar: true,
                         willOpen: () => {
@@ -351,7 +359,7 @@
         }
 
         var itemcode = Category + Material + MaterialType + Colour + Size + SizeUnit;
-        var itemname = CategoryName + MaterialName + MaterialTypeName + ColourName + SizeName + SizeUnitName;
+        var itemname = CategoryName + MaterialName + MaterialTypeName + ColourName + SizeName + SizeUnit;
         // alert("The text has been changed.");
         $("#itemcode").val(itemcode.trim());
         $("#itemname").val(itemname.trim());

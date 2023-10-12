@@ -10,7 +10,7 @@ class itemsModel extends Model
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
 
-    protected $allowedFields = ['itemcode', 'itemname', 'categorycode', 'materialcode', 'materialtypecode', 'colourcode', 'unit', 'slug', 'itemsimg'];
+    protected $allowedFields = ['itemcode', 'itemname', 'categorycode', 'materialcode', 'materialtypecode', 'colourcode', 'size', 'sizeunit', 'unit', 'slug', 'itemimg'];
 
     public function itemsList($slug = false)
     {

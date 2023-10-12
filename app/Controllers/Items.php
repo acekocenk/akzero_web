@@ -61,7 +61,7 @@ class items extends BaseController
             foreach ($fetch_data as $row) {
                 $sub_array = array();
                 $sub_array[] = $no++;
-                $sub_array[] = '<img src="' . base_url() . '/img/items/' . $row->itemsimg . '" alt="" class="sampul">';
+                $sub_array[] = '<img src="' . base_url() . '/img/items/' . $row->itemimg . '" alt="" class="sampul">';
                 $sub_array[] = $row->itemcode;
                 $sub_array[] = $row->itemname;
                 $sub_array[] = $row->unit;
@@ -103,11 +103,11 @@ class items extends BaseController
         if ($this->request->isAJAX()) {
             $valid = $this->validate([
                 'itemcode' => [
-                    'rules' => 'required|is_unique[items.itemcode]|max_length[20]',
+                    'rules' => 'required|is_unique[items.itemcode]|max_length[22]',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.',
-                        'max_length' => '{field} maksimal 13 huruf.'
+                        'max_length' => '{field} maksimal 22 huruf.'
                     ]
                 ],
                 'itemname' => [
@@ -119,15 +119,14 @@ class items extends BaseController
                     ]
                 ],
                 'size' => [
-                    'rules' => 'required|min_length[7]|max_length[7]',
+                    'rules' => 'required|max_length[7]',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.',
-                        'min_length' => '{field} minimum 7 huruf.',
                         'max_length' => '{field} maksimal 7 huruf.'
                     ]
                 ],
-                'itemsimg' => [
-                    'rules' => 'max_size[itemsimg,4096]|is_image[itemsimg]|mime_in[itemsimg,image/jpg,image/jpeg,image/png]',
+                'itemimg' => [
+                    'rules' => 'max_size[itemimg,4096]|is_image[itemimg]|mime_in[itemimg,image/jpg,image/jpeg,image/png]',
                     'errors' => [
                         'max_size' => 'Ukuran maksimal img 4MB.',
                         'is_image' => 'File terbaca bukan gambar.',
@@ -140,12 +139,13 @@ class items extends BaseController
                     'error' => [
                         'itemcode' => validation_show_error('itemcode'),
                         'itemname' => validation_show_error('itemname'),
-                        'itemsimg' => validation_show_error('itemsimg'),
+                        'itemsize' => validation_show_error('itemsize'),
+                        'itemimg' => validation_show_error('itemimg'),
                     ]
                 ];
             } else {
                 //proses gambar
-                $filePicture = $this->request->getFile('itemsimg');
+                $filePicture = $this->request->getFile('itemimg');
 
                 if ($filePicture->getError() == 4) {
                     $namaPicture = 'default.png';
@@ -164,11 +164,11 @@ class items extends BaseController
                         'materialcode' => $this->request->getVar('material'),
                         'materialtypecode' => $this->request->getVar('materialtype'),
                         'colourcode' => $this->request->getVar('colour'),
-                        'size' => $this->request->getVar('size'),
-                        'sizeunit' => $this->request->getVar('sizeunit'),
+                        'size' => $this->request->getVar('itemsize'),
+                        'sizeunit' => $this->request->getVar('unitsize'),
                         'unit' => strtoupper($this->request->getVar('unit')),
                         'slug' => $slug,
-                        'itemsimg' => $namaPicture
+                        'itemimg' => $namaPicture
                     ]
                 );
                 $msg = [
@@ -235,8 +235,8 @@ class items extends BaseController
                         'max_length' => '{field} maksimal 50 huruf'
                     ]
                 ],
-                'itemsimg' => [
-                    'rules' => 'max_size[itemsimg,4096]|is_image[itemsimg]|mime_in[itemsimg,image/jpg,image/jpeg,image/png]',
+                'itemimg' => [
+                    'rules' => 'max_size[itemimg,4096]|is_image[itemimg]|mime_in[itemimg,image/jpg,image/jpeg,image/png]',
                     'errors' => [
                         'max_size' => 'Ukuran maksimal img 4MB.',
                         'is_image' => 'File terbaca bukan gambar.',
@@ -249,19 +249,19 @@ class items extends BaseController
                     'error' => [
                         'itemcode' => validation_show_error('itemcode'),
                         'itemname' => validation_show_error('itemname'),
-                        'itemsimg' => validation_show_error('itemsimg'),
+                        'itemimg' => validation_show_error('itemimg'),
                     ]
                 ];
             } else {
 
                 //proses gambar
-                $filePicture = $this->request->getFile('itemsimg');
+                $filePicture = $this->request->getFile('itemimg');
 
                 if ($filePicture->getError() == 4) {
-                    $namaPicture = $this->request->getVar('itemsimgLama');
+                    $namaPicture = $this->request->getVar('itemimgLama');
                 } else {
-                    if ($this->request->getVar('itemsimgLama') != "default.png") {
-                        unlink('img/items/' . $this->request->getVar('itemsimgLama'));
+                    if ($this->request->getVar('itemimgLama') != "default.png") {
+                        unlink('img/items/' . $this->request->getVar('itemimgLama'));
                     }
                     $namaPicture = $filePicture->getRandomName();
                     $filePicture->move('img/items', $namaPicture);
@@ -282,7 +282,7 @@ class items extends BaseController
                         'sizeunit' => $this->request->getVar('sizeunit'),
                         'unit' => strtoupper($this->request->getVar('unit')),
                         'slug' => $slug,
-                        'itemsimg' => $namaPicture
+                        'itemimg' => $namaPicture
                     ]
                 );
                 $msg = [
