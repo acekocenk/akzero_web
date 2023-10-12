@@ -219,6 +219,7 @@ class colour extends BaseController
     }
     public function delete()
     {
+        // kasd
         if ($this->request->isAJAX()) {
             $id = $this->request->getVar('id');
             $this->colourModel->delete($id);
