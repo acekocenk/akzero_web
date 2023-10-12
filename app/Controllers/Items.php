@@ -103,7 +103,7 @@ class items extends BaseController
         if ($this->request->isAJAX()) {
             $valid = $this->validate([
                 'itemcode' => [
-                    'rules' => 'required|is_unique[items.itemcode]|max_length[13]',
+                    'rules' => 'required|is_unique[items.itemcode]|max_length[20]',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.',
@@ -116,6 +116,14 @@ class items extends BaseController
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.',
                         'max_length' => '{field} maksimal 50 huruf.'
+                    ]
+                ],
+                'size' => [
+                    'rules' => 'required|min_length[7]|max_length[7]',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong.',
+                        'min_length' => '{field} minimum 7 huruf.',
+                        'max_length' => '{field} maksimal 7 huruf.'
                     ]
                 ],
                 'itemsimg' => [

@@ -55,33 +55,54 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="colour" class="control-label col-sm-4" align="right">item Code</label>
+                        <label for="itemsize" class="control-label col-sm-4" align="right">item Size</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm text-uppercase" id="itemsize" name="itemsize" value="0000000" minlength="7" maxlength="7" onchange="createitems()">
+                            <div class="invalid-feedback" id="errorSize"></div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="unitsize" class="control-label col-sm-4" align="right">Size Unit</label>
+                        <div class="col-sm-8">
+                            <select class="form-control form-control-sm" aria-label="Default select example" id="unitsize" name="unitsize" onchange="createitems()">
+                                <option selected>Open this select</option>
+                                <option value="MM">MM</option>
+                                <option value="CM">CM</option>
+                                <option value="MX">M</option>
+                                <option value="FT">FEET</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="itemcode" class="control-label col-sm-4" align="right">item Code</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control form-control-sm text-uppercase" id="itemcode" name="itemcode" value="XXX" autofocus>
                             <div class="invalid-feedback" id="errorCode"></div>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="colour" class="control-label col-sm-4" align="right">item Name</label>
+                        <label for="itemname" class="control-label col-sm-4" align="right">item Name</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control form-control-sm text-uppercase" id="itemname" name="itemname" value="XXX">
                             <div class="invalid-feedback" id="errorName"></div>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="unit" class="control-label col-sm-4" align="right">Unit</label>
+                        <label for="unit" class="control-label col-sm-4" align="right">Item Unit</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="unit" name="unit">
                                 <option selected>Open this select</option>
                                 <option value="PCS">PCS</option>
                                 <option value="SET">SET</option>
-                                <option value="M">METER</option>
-                                <option value="CM">CM</option>
-                                <option value="SQM">SQM</option>
-                                <option value="KG">KG</option>
+                                <option value="BOX">BOX</option>
+                                <option value="LTR">LTR</option>
+                                <option value="ROL">ROLL</option>
+                                <option value="RIM">RIM</option>
+                                <option value="MX">M</option>
                             </select>
                         </div>
                     </div>
+
                     <div class="row mb-3">
                         <label for="itemimg" class="control-label col-sm-4" align="right">item Image</label>
                         <div class="col-sm-4">
@@ -247,11 +268,15 @@
         var Material;
         var MaterialType;
         var Colour;
+        var Size;
+        var SizeUnit;
 
         var CategoryName;
         var MaterialName;
         var MaterialTypeName;
         var ColourName;
+        var SizeName;
+        var SizeUnitName;
 
         if ($("#category").val() == 'Open this select') {
             Category = 'XXX';
@@ -285,10 +310,50 @@
             ColourName = $("#colour option:selected").text();
         }
 
-        var itemcode = Category + Material + MaterialType + Colour;
-        var itemname = CategoryName + MaterialName + MaterialTypeName + ColourName;
+        var a = $("#itemsize").val().length;
+        if ((a >= 1) && (a < 2)) {
+            Size = '000000' + $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        } else if ((a >= 2) && (a < 3)) {
+            Size = '00000' + $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        } else if ((a >= 3) && (a < 4)) {
+            Size = '0000' + $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        } else if ((a >= 4) && (a < 5)) {
+            Size = '000' + $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        } else if ((a >= 5) && (a < 6)) {
+            Size = '00' + $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        } else if ((a >= 6) && (a < 7)) {
+            Size = '0' + $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        } else if ((a >= 7) && (a < 8)) {
+            Size = $("#itemsize").val();
+            SizeName = $("#itemsize").val();
+            //alert(a);
+        }
+        // }
+
+        if ($("#unitsize").val() == 'Open this select') {
+            SizeUnit = 'XX';
+            SizeUnitName = '';
+        } else {
+            SizeUnit = $("#unitsize").val()
+            SizeUnitName = $("#unitsize option:selected").text();
+        }
+
+        var itemcode = Category + Material + MaterialType + Colour + Size + SizeUnit;
+        var itemname = CategoryName + MaterialName + MaterialTypeName + ColourName + SizeName + SizeUnitName;
         // alert("The text has been changed.");
-        $("#itemcode").val(itemcode);
+        $("#itemcode").val(itemcode.trim());
         $("#itemname").val(itemname.trim());
         // });
     }
