@@ -151,7 +151,8 @@
                 <div id="masterinv" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Setup Master Inv</h6>
-                        <a class="collapse-item" href="<?= base_url('/bom'); ?>">Bill Of Material</a>
+                        <!-- <a class="collapse-item" href="<?= base_url('/bom'); ?>">Bill Of Material</a> -->
+                        <a class="collapse-item" href="<?= base_url('/items'); ?>">Items</a>
                         <a class="collapse-item" href="<?= base_url('/category'); ?>">Category</a>
                         <a class="collapse-item" href="<?= base_url('/colour'); ?>">Colour</a>
                         <a class="collapse-item" href="<?= base_url('/material'); ?>">Material</a>
