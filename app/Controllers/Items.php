@@ -111,20 +111,20 @@ class items extends BaseController
                     ]
                 ],
                 'itemname' => [
-                    'rules' => 'required|is_unique[items.itemname]|max_length[50]',
+                    'rules' => 'required|is_unique[items.itemname]|max_length[200]',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.',
-                        'max_length' => '{field} maksimal 50 huruf.'
+                        'max_length' => '{field} maksimal 200 huruf.'
                     ]
                 ],
-                'size' => [
-                    'rules' => 'required|max_length[7]',
-                    'errors' => [
-                        'required' => '{field} tidak boleh kosong.',
-                        'max_length' => '{field} maksimal 7 huruf.'
-                    ]
-                ],
+                // 'size' => [
+                //     'rules' => 'required|max_length[7]',
+                //     'errors' => [
+                //         'required' => '{field} tidak boleh kosong.',
+                //         'max_length' => '{field} maksimal 7 huruf.'
+                //     ]
+                // ],
                 'itemimg' => [
                     'rules' => 'max_size[itemimg,4096]|is_image[itemimg]|mime_in[itemimg,image/jpg,image/jpeg,image/png]',
                     'errors' => [
@@ -139,7 +139,7 @@ class items extends BaseController
                     'error' => [
                         'itemcode' => validation_show_error('itemcode'),
                         'itemname' => validation_show_error('itemname'),
-                        'itemsize' => validation_show_error('itemsize'),
+                        // 'itemsize' => validation_show_error('size'),
                         'itemimg' => validation_show_error('itemimg'),
                     ]
                 ];

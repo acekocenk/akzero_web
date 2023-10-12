@@ -14,7 +14,7 @@
                         <label for="category" class="control-label col-sm-4" align="right">Category</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="category" name="category" onchange="createitems()">
-                                <option selected>Open this select</option>
+                                <option selected>XXX</option>
                                 <?php foreach ($category as $t) : ?>
                                     <option value="<?= $t['categorycode']; ?>"><?= $t['categoryname']; ?> </option>
                                 <?php endforeach; ?>
@@ -25,7 +25,7 @@
                         <label for="material" class="control-label col-sm-4" align="right">Material</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="material" name="material" onchange="createitems()">
-                                <option selected>Open this select</option>
+                                <option selected>XXX</option>
                                 <?php foreach ($material as $t) : ?>
                                     <option value="<?= $t['materialcode']; ?>"><?= $t['materialname']; ?> </option>
                                 <?php endforeach; ?>
@@ -36,7 +36,7 @@
                         <label for="materialtype" class="control-label col-sm-4" align="right">Material Type</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="materialtype" name="materialtype" onchange="createitems()">
-                                <option selected>Open this select</option>
+                                <option selected>X0X0</option>
                                 <?php foreach ($materialtype as $t) : ?>
                                     <option value="<?= $t['materialtypecode']; ?>"><?= $t['materialtypename']; ?> </option>
                                 <?php endforeach; ?>
@@ -47,7 +47,7 @@
                         <label for="colour" class="control-label col-sm-4" align="right">Colour</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="colour" name="colour" onchange="createitems()">
-                                <option selected>Open this select</option>
+                                <option selected>XXX</option>
                                 <?php foreach ($colour as $t) : ?>
                                     <option value="<?= $t['colourcode']; ?>"><?= $t['colourname']; ?> </option>
                                 <?php endforeach; ?>
@@ -65,7 +65,7 @@
                         <label for="unitsize" class="control-label col-sm-4" align="right">Size Unit</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="unitsize" name="unitsize" onchange="createitems()">
-                                <option selected>Open this select</option>
+                                <option selected>XX</option>
                                 <option value="MM">MM</option>
                                 <option value="CM">CM</option>
                                 <option value="MX">M</option>
@@ -91,7 +91,7 @@
                         <label for="unit" class="control-label col-sm-4" align="right">Item Unit</label>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" aria-label="Default select example" id="unit" name="unit">
-                                <option selected>Open this select</option>
+                                <option selected>XX</option>
                                 <option value="PCS">PCS</option>
                                 <option value="SET">SET</option>
                                 <option value="BOX">BOX</option>
@@ -286,7 +286,7 @@
         var SizeName;
         var SizeUnitName;
 
-        if ($("#category").val() == 'Open this select') {
+        if ($("#category").val() == 'XXX') {
             Category = 'XXX';
             CategoryName = '';
         } else {
@@ -294,7 +294,7 @@
             CategoryName = $("#category option:selected").text();
         }
 
-        if ($("#material").val() == 'Open this select') {
+        if ($("#material").val() == 'XXX') {
             Material = 'XXX';
             MaterialName = '';
         } else {
@@ -302,7 +302,7 @@
             MaterialName = $("#material option:selected").text();
         }
 
-        if ($("#materialtype").val() == 'Open this select') {
+        if ($("#materialtype").val() == 'X0X0') {
             MaterialType = 'X0X0';
             MaterialTypeName = '';
         } else {
@@ -310,7 +310,7 @@
             MaterialTypeName = $("#materialtype option:selected").text();
         }
 
-        if ($("#colour").val() == 'Open this select') {
+        if ($("#colour").val() == 'XXX') {
             Colour = 'XXX';
             ColourName = '';
         } else {
@@ -350,7 +350,7 @@
         }
         // }
 
-        if ($("#unitsize").val() == 'Open this select') {
+        if ($("#unitsize").val() == 'XX') {
             SizeUnit = 'XX';
             SizeUnitName = '';
         } else {
