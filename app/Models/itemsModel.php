@@ -12,14 +12,14 @@ class itemsModel extends Model
 
     protected $allowedFields = ['itemcode', 'itemname', 'categorycode', 'materialcode', 'materialtypecode', 'colourcode', 'size', 'sizeunit', 'unit', 'slug', 'itemimg'];
 
-    public function itemsList($slug = false)
+    public function itemsList($itemcode = false)
     {
-        if ($slug == false) {
+        if ($itemcode == false) {
             $this->orderby('itemname');
             return $this->findAll();
         }
 
-        return $this->where(['slug' => $slug])->first();
+        return $this->where(['itemcode' => $itemcode])->first();
     }
 
     public function itemsListajax()

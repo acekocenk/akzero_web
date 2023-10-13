@@ -49,36 +49,8 @@
     $(document).ready(function() {
         var dataTableItem;
         ViewDataTable();
-        Add();
+        add();
     });
-
-    // function ViewDataTable2() {
-    //     Swal.fire({
-    //         title: 'BOE Loading.......',
-    //         icon: 'info',
-    //         timer: 3000,
-    //         timerProgressBar: true,
-    //         didOpen: () => {
-    //             Swal.showLoading(Swal.getDenyButton())
-    //             dataTableItem = $('#tbItem').DataTable({
-    //                 // "processing": true,
-    //                 // "serverSide": true,
-    //                 "order": [],
-    //                 "ajax": {
-    //                     url: "<//?= base_url('items/ajaxloaditem') ?>",
-    //                     type: "POST",
-    //                 },
-    //                 "bPaginate": true,
-    //                 "bInfo": true,
-    //                 "bFilter": true,
-    //                 // "scrollX": true,
-    //                 // "autoWidth": true
-    //                 // "bLengthChange": false,
-    //                 // "pageLength": 5
-    //             });
-    //         }
-    //     });
-    // }
 
     function ViewDataTable() {
         dataTableItem = $('#tbItem').DataTable({
@@ -99,7 +71,7 @@
         });
     }
 
-    function Add() {
+    function add() {
         $('#btnAdd').click(function(e) {
             e.preventDefault();
             $.ajax({
@@ -116,12 +88,12 @@
         });
     }
 
-    function edit(slug) {
+    function edit(itemcode) {
         $.ajax({
             type: "post",
             url: "/items/edit",
             data: {
-                slug: slug
+                itemcode: itemcode
             },
             dataType: "json",
             success: function(response) {
@@ -150,7 +122,7 @@
                     type: "post",
                     url: "/items/delete",
                     data: {
-                        Itemid: id
+                        itemid: id
                     },
                     dataType: "json",
                     success: function(response) {

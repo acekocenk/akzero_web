@@ -15,7 +15,7 @@ class items extends BaseController
     protected $materialModel;
     protected $materialtypeModel;
     protected $colourModel;
-
+    protected $session;
     public function __construct()
     {
         $this->itemsModel = new itemsModel();
@@ -23,6 +23,7 @@ class items extends BaseController
         $this->materialModel = new materialModel();
         $this->materialtypeModel = new materialtypeModel();
         $this->colourModel = new colourModel();
+        $this->session = \Config\Services::session();
 
         helper(['form']);
     }
@@ -30,7 +31,7 @@ class items extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'List items',
+            'title' => 'Items',
             //'items' => $this->itemsModel->itemsList()
         ];
         return view('masterinv/items/index', $data);
@@ -65,7 +66,7 @@ class items extends BaseController
                 $sub_array[] = $row->itemcode;
                 $sub_array[] = $row->itemname;
                 $sub_array[] = $row->unit;
-                $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->slug')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->id')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
+                $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->itemcode')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->id')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
                 $data[] = $sub_array;
             }
             $output = array(
@@ -82,15 +83,38 @@ class items extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'title' => 'Add items',
+                'title' => 'Form Add items',
                 'category' => $this->categoryModel->CategoryList(),
                 'material' => $this->materialModel->materialList(),
                 'materialtype' => $this->materialtypeModel->materialtypeList(),
                 'colour' => $this->colourModel->colourList(),
-                'validation' =>  \Config\Services::validation()
+                // 'validation' =>  \Config\Services::validation(),
+                'acction' => 'Add',
             ];
             $msg = [
                 'create' => view('masterinv/items/create', $data)
+            ];
+            echo json_encode($msg);
+        } else {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException(' Not Found');
+        }
+    }
+
+    public function edit()
+    {
+        if ($this->request->isAJAX()) {
+            $itemcode = $this->request->getVar('itemcode');
+            $data = [
+                'title' => 'Edit items',
+                'items' => $this->itemsModel->itemsList($itemcode),
+                'category' => $this->categoryModel->CategoryList(),
+                'material' => $this->materialModel->materialList(),
+                'materialtype' => $this->materialtypeModel->materialtypeList(),
+                'colour' => $this->colourModel->colourList(),
+                'acction' => 'Edit',
+            ];
+            $msg = [
+                'edit' => view('masterinv/items/edit', $data)
             ];
             echo json_encode($msg);
         } else {
@@ -139,7 +163,7 @@ class items extends BaseController
                     'error' => [
                         'itemcode' => validation_show_error('itemcode'),
                         'itemname' => validation_show_error('itemname'),
-                        // 'itemsize' => validation_show_error('size'),
+                        'itemsize' => validation_show_error('size'),
                         'itemimg' => validation_show_error('itemimg'),
                     ]
                 ];
@@ -181,41 +205,20 @@ class items extends BaseController
         }
     }
 
-    public function edit()
-    {
-        if ($this->request->isAJAX()) {
-            $slug = $this->request->getVar('slug');
-            $data = [
-                'title' => 'Edit items',
-                'items' => $this->itemsModel->itemsList($slug),
-                'category' => $this->categoryModel->CategoryList(),
-                'material' => $this->materialModel->materialList(),
-                'materialtype' => $this->materialtypeModel->materialtypeList(),
-                'colour' => $this->colourModel->colourList()
-            ];
-            $msg = [
-                'edit' => view('masterinv/items/edit', $data)
-            ];
-            echo json_encode($msg);
-        } else {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException(' Not Found');
-        }
-    }
-
     public function update()
     {
         if ($this->request->isAJAX()) {
-            $itemsLama = $this->itemsModel->itemsList($this->request->getVar('slug'));
+            $itemsLama = $this->itemsModel->itemsList($this->request->getVar('itemcodelama'));
 
             if ($itemsLama['itemcode'] == $this->request->getVar('itemcode')) {
-                $rule_itemcode = 'required|max_length[13]';
+                $rule_itemcode = 'required|max_length[22]';
             } else {
-                $rule_itemcode = 'required|is_unique[items.itemcode]|max_length[13]';
+                $rule_itemcode = 'required|is_unique[items.itemcode]|max_length[22]';
             }
             if ($itemsLama['itemname'] == $this->request->getVar('itemname')) {
-                $rule_itemname = 'required|max_length[50]';
+                $rule_itemname = 'required|max_length[200]';
             } else {
-                $rule_itemname = 'required|is_unique[items.itemname]|max_length[50]';
+                $rule_itemname = 'required|is_unique[items.itemname]|max_length[200]';
             }
 
             $valid = $this->validate([
@@ -224,7 +227,7 @@ class items extends BaseController
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.',
-                        'max_length' => '{field} maksimal 13 huruf'
+                        'max_length' => '{field} maksimal 22 huruf'
                     ]
                 ],
                 'itemname' => [
@@ -232,7 +235,7 @@ class items extends BaseController
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.',
-                        'max_length' => '{field} maksimal 50 huruf'
+                        'max_length' => '{field} maksimal 200 huruf'
                     ]
                 ],
                 'itemimg' => [
@@ -278,8 +281,8 @@ class items extends BaseController
                         'materialcode' => $this->request->getVar('material'),
                         'materialtypecode' => $this->request->getVar('materialtype'),
                         'colourcode' => $this->request->getVar('colour'),
-                        'size' => $this->request->getVar('size'),
-                        'sizeunit' => $this->request->getVar('sizeunit'),
+                        'size' => $this->request->getVar('itemsize'),
+                        'sizeunit' => $this->request->getVar('unitsize'),
                         'unit' => strtoupper($this->request->getVar('unit')),
                         'slug' => $slug,
                         'itemimg' => $namaPicture
@@ -298,7 +301,7 @@ class items extends BaseController
     public function delete()
     {
         if ($this->request->isAJAX()) {
-            $id = $this->request->getVar('itemsid');
+            $id = $this->request->getVar('itemid');
             $this->itemsModel->delete($id);
             $msg = [
                 'sukses' => 'delete successfully'
