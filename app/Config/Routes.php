@@ -59,10 +59,15 @@ $routes->get('/supplier', 'supplier::index', ['filter' => 'permission:Manage-Mas
 $routes->get('/bom', 'Bom::index', ['filter' => 'permission:Manage-Master-Inv']);
 // $routes->get('/bom', 'Bom::index', ['filter' => 'role:admin']);
 
+$routes->get('/items', 'Items::index', ['filter' => 'permission:Manage-Master-Inv']);
+// $routes->get('/bom', 'Bom::index', ['filter' => 'role:admin']);
+
 //inv warehouse
 
 $routes->get('/whin', 'WarehouseIn::index', ['filter' => 'permission:Manage-WH']);
 // $routes->get('/whin', 'WarehouseIn::index', ['filter' => 'role:admin']);
+
+$routes->get('/po', 'po::index', ['filter' => 'permission:Manage-PO']);
 
 // $routes->get('/bom/ajaxloaddatabom', 'bom::ajaxloaddatabom', ['filter' => 'role:admin']);
 // $routes->get('/category/loaddata', 'Category::loaddata');

@@ -50,7 +50,7 @@
 
             <!-- Nav Item - Purchase -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= base_url('/po'); ?>">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Purchase Order</span></a>
             </li>
