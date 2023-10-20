@@ -79,4 +79,16 @@ class po extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException(' Not Found');
         }
     }
+
+    public function create()
+    {
+        $data = [
+            'title' => 'Purchase Order Create',
+            'supplier' => $this->supplierModel->supplierList(),
+            // 'po' => $this->poModel->poListajax()
+            // 'item' => $this->itemsModel->itemsListajax()
+
+        ];
+        return view('po/create', $data);
+    }
 }

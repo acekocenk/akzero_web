@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h5 class="mt-3"><?= $title; ?></h5>
-        <button type="button" id="btnAdd" class="btn btn-primary btn-sm mt-3 mb-3"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add</button>
+        <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('/po/create'); ?>" role="button"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add Link</a>
 
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert">

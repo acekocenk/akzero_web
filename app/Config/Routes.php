@@ -67,7 +67,10 @@ $routes->get('/items', 'Items::index', ['filter' => 'permission:Manage-Master-In
 $routes->get('/whin', 'WarehouseIn::index', ['filter' => 'permission:Manage-WH']);
 // $routes->get('/whin', 'WarehouseIn::index', ['filter' => 'role:admin']);
 
-$routes->get('/po', 'po::index', ['filter' => 'permission:Manage-PO']);
+$routes->get('/po', 'po::index', ['filter' => 'permission:Purchase-Order']);
+$routes->get('/po/create', 'po::create', ['filter' => 'permission:Purchase-Order-Add']);
+$routes->get('/po/edit/(:any)', 'po::edit/$1', ['filter' => 'permission:Purchase-Order-Edit']);
+$routes->delete('/po/(:num)', 'po::delete/$1', ['filter' => 'permission:Purchase-Order-Delete']);
 
 // $routes->get('/bom/ajaxloaddatabom', 'bom::ajaxloaddatabom', ['filter' => 'role:admin']);
 // $routes->get('/category/loaddata', 'Category::loaddata');
