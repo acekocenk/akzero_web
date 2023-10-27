@@ -1,0 +1,455 @@
+INFO - 2023-10-24 01:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:42:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:42:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:43:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:57:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 01:57:52 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 01:57:52 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 01:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 01:58:23 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 01:58:23 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 01:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 01:58:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 01:58:27 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 01:58:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 01:58:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 01:58:43 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 01:58:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 01:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 01:58:44 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 01:58:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:00:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:00:47 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:00:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:01:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:01:23 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:01:23 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:01:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:01:24 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:01:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:01:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:01:26 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:01:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:01:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:01:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:01:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:01:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:01:40 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:01:40 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype =  ')
+ 5 APPPATH\Controllers\Po.php(100): App\Models\poModel->getPONO('')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:01:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:01:59 --> mysqli_sql_exception: Unknown column 'Local' in 'where clause' in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('Local')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:01:59 --> Unknown column 'Local' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local ')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local ')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('Local')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-10-24 02:07:02 --> syntax error, unexpected '$potype' (T_VARIABLE)
+in APPPATH\Models\poModel.php on line 52.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('E:\\xampp\\htdocs\\akzero_web\\app\\Models\\poModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\poModel')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\poModel')
+ 4 APPPATH\Controllers\Po.php(17): spl_autoload_call('App\\Models\\poModel')
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\po->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:16:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:16:29 --> mysqli_sql_exception: Unknown column 'Local' in 'where clause' in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('Local')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:16:29 --> Unknown column 'Local' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('Local')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:22:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:23:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:23:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:26:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:27:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-10-24 02:27:04 --> Too few arguments to function App\Models\poModel::getPONO(), 0 passed in E:\xampp\htdocs\akzero_web\app\Controllers\Po.php on line 101 and exactly 1 expected
+in APPPATH\Models\poModel.php on line 50.
+ 1 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-10-24 02:27:21 --> mysqli_sql_exception: Unknown column 'Local' in 'where clause' in E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGH...', 0)
+#1 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGH...')
+#2 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGH...')
+#3 E:\xampp\htdocs\akzero_web\app\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGH...')
+#4 E:\xampp\htdocs\akzero_web\app\Controllers\Po.php(101): App\Models\poModel->getPONO('Local')
+#5 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(932): App\Controllers\po->create()
+#6 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+#7 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\xampp\htdocs\akzero_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 E:\xampp\htdocs\akzero_web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-10-24 02:27:21 --> Unknown column 'Local' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;')
+ 4 APPPATH\Models\poModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = Local;')
+ 5 APPPATH\Controllers\Po.php(101): App\Models\poModel->getPONO('Local')
+ 6 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\po->create()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\po))
+ 8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('E:\\xampp\\htdocs\\akzero_web\\public\\index.php')
+INFO - 2023-10-24 02:29:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:32:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:38:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:38:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:38:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:38:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:40:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:40:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:40:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:40:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:41:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:41:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:41:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:43:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:44:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:44:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:45:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:45:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:50:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:50:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:50:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:51:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:51:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:51:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 02:52:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 08:08:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 08:08:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:37:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:37:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:38:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:38:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:38:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-10-24 09:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

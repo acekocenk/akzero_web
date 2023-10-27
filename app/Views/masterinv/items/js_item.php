@@ -102,7 +102,7 @@
             e.preventDefault();
             $.ajax({
                 type: "post",
-                url: "/items/update",
+                url: "<?= base_url('/items/update') ?>",
                 data: new FormData(this), //$(this).serialize(),
                 dataType: "json",
                 contentType: false,
@@ -264,11 +264,6 @@
             ColourName = $("#colour option:selected").text();
         }
 
-        if ($("#itemsize").val() == '') {
-            document.getElementById('itemsize').value = '0000000';
-            Size = '0000000';
-        }
-
         var a = $("#itemsize").val().length;
         if ((a >= 1) && (a < 2)) {
             Size = '000000' + $("#itemsize").val();
@@ -298,6 +293,12 @@
             Size = $("#itemsize").val();
             SizeName = $("#itemsize").val();
             //alert(a);
+        }
+
+        if ($("#itemsize").val() == '') {
+            document.getElementById('itemsize').value = '0000000';
+            Size = '0000000';
+            SizeName = '';
         }
 
         if ($("#unitsize").val() == 'XX') {

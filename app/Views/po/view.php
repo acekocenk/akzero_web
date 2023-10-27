@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h5 class="mt-3"><?= $title; ?></h5>
-        <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('/po/create'); ?>" role="button"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add Link</a>
+        <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('/po/create'); ?>" role="button"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add</a>
 
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert">
@@ -11,10 +11,11 @@
     </div>
     <div class="card-body">
         <div class="table-responsive small">
-            <table id="tbPO" name="tbPO" class="table table-striped" width="150%" cellspacing="0">
+            <table id="tbPO" name="tbPO" class="table table-striped table-sm" width="150%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>PO Type</th>
                         <th>PO No</th>
                         <th>PO Date</th>
                         <th>PO In Date</th>

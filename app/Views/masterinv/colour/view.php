@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive small">
-            <table id="tbcolour" name="tbcolour" class="table table-striped">
+            <table id="tbcolour" name="tbcolour" class="table table-striped table-sm">
                 <thead>
                     <tr>
                         <th>#</th>

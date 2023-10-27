@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class poModel extends Model
+class podetailModel extends Model
 {
     protected $table = 'po_detail';
     protected $primaryKey = 'id';
@@ -12,7 +12,7 @@ class poModel extends Model
 
     protected $allowedFields = ['itemcode', 'itemname', 'qty', 'unit', 'qty2', 'unit2', 'qtyprice', 'unittqtyprice', 'price', 'total'];
 
-    public function poList($pono = false)
+    public function podetailList($pono = false)
     {
         if ($pono == false) {
             $this->orderby('itemcode');
@@ -22,7 +22,7 @@ class poModel extends Model
         return $this->where(['poid' => $pono])->first();
     }
 
-    public function poListajax()
+    public function podetailListajax()
     {
         $builder = $this->db->table('po_detail');
         $query = $builder->get();

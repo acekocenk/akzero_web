@@ -22,32 +22,32 @@
             dataType: "json",
             success: function(response) {
                 $('.formview').html(response.view).show();
-                // let timerInterval
-                // Swal.fire({
-                //     title: 'Load po',
-                //     timer: 1000,
-                //     timerProgressBar: true,
-                //     willOpen: () => {
-                //         Swal.showLoading()
-                //         timerInterval = setInterval(() => {
-                //             const content = Swal.getContent()
-                //             if (content) {
-                //                 const b = content.querySelector('b')
-                //                 if (b) {
-                //                     b.textContent = Swal.getTimerLeft()
-                //                 }
-                //             }
-                //         }, 100)
-                //     },
-                //     onClose: () => {
-                //         clearInterval(timerInterval)
-                //     }
-                // }).then((result) => {
-                //     /* Read more about handling dismissals below */
-                //     if (result.dismiss === Swal.DismissReason.timer) {
-                //         console.log('I was closed by the timer')
-                //     }
-                // })
+                let timerInterval
+                Swal.fire({
+                    title: 'Load Purchase Order',
+                    timer: 1000,
+                    timerProgressBar: true,
+                    willOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            const content = Swal.getContent()
+                            if (content) {
+                                const b = content.querySelector('b')
+                                if (b) {
+                                    b.textContent = Swal.getTimerLeft()
+                                }
+                            }
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                    }
+                })
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);

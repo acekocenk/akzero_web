@@ -9,7 +9,7 @@
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>
-        <table id="tbsupplier" name="tbsupplier" class="table table-striped">
+        <table id="tbsupplier" name="tbsupplier" class="table table-striped table-sm">
             <thead>
                 <tr>
                     <th>#</th>

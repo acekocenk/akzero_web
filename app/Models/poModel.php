@@ -10,7 +10,7 @@ class poModel extends Model
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
 
-    protected $allowedFields = ['pono', 'podate', 'indate', 'currency', 'supplierid', 'usersid', 'discount', 'ppn', 'terbilang', 'postatus'];
+    protected $allowedFields = ['potype', 'pono', 'podate', 'indate', 'currency', 'supplierid', 'usersid', 'discount', 'ppn', 'terbilang', 'postatus'];
 
     public function poList($pono = false)
     {
@@ -26,7 +26,8 @@ class poModel extends Model
     {
         $sql = 'SELECT 
         po.id AS poid,
-        po.pono AS pono,
+        po.potype,
+        po.pono,
         po.podate,
         po.indate,
         po.currency,
@@ -44,5 +45,30 @@ class poModel extends Model
         INNER JOIN users ON po.usersid = users.id';
         $query = $this->db->query($sql);
         return $query->getResult();
+    }
+
+    public function getPONO($potype)
+    {
+        $sql = 'SELECT MAX(RIGHT(pono,4)) AS kd_max FROM po WHERE DATE_FORMAT(podate, "%Y") = DATE_FORMAT(CURDATE(),"%Y") AND potype = "' . $potype . '";';
+        $q = $this->db->query($sql);
+
+        $kd = "";
+        $tp = "";
+        if ($q->getNumRows() > 0) {
+            foreach ($q->getResult() as $k) {
+                $tmp = ((int)$k->kd_max) + 1;
+                $kd = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "0001";
+        }
+
+        if ($potype == "Local") {
+            $tp = "LK";
+        } elseif ($potype == "Import") {
+            $tp = "IM";
+        }
+        date_default_timezone_set('Asia/Jakarta');
+        return "BIG" . $tp . date('ym') .  "-" . $kd;
     }
 }

@@ -12,6 +12,10 @@
     <title><?= $title; ?></title>
     <!-- My CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>/css/style.css">
+
+    <!-- jQuery inputpicker -->
+    <link rel="stylesheet" href="<?= base_url(); ?>/css/jquery.inputpicker.css">
+
     <!-- Custom fonts for this template-->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -39,6 +43,9 @@
 
     <!-- sweetalert -->
     <script src="<?= base_url(); ?>/js/sweetalert2.min.js"></script>
+
+    <!-- jQuery inputpicker -->
+    <script src="<?= base_url(); ?>/js/jquery.inputpicker.js"></script>
 </head>
 
 <body id="page-top">
