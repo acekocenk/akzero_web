@@ -46,6 +46,9 @@
 
     <!-- jQuery inputpicker -->
     <script src="<?= base_url(); ?>/js/jquery.inputpicker.js"></script>
+
+    <!-- dataTables SUM -->
+    <script src="<?= base_url(); ?>/js/dataTables.sum.js"></script>
 </head>
 
 <body id="page-top">

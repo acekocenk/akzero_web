@@ -4,6 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Database\Query;
 use CodeIgniter\Model;
+use SebastianBergmann\Comparator\NumericComparator;
 
 class podetailModel extends Model
 {
@@ -26,11 +27,11 @@ class podetailModel extends Model
     public function podetailListajax($poid = false)
     {
         $builder = $this->db->table('po_detail');
-        if ($poid == false) {
-            $query = $builder->get();
-        } else {
-            $query = $builder->getWhere(['poid' => $poid]);
-        }
+        // if ($poid == false) {
+        //     $query = $builder->get();
+        // } else {
+        $query = $builder->getWhere(['poid' => $poid]);
+        // }
         return $query->getResult();
     }
 
@@ -57,5 +58,21 @@ class podetailModel extends Model
             }
         }
         return $rsl;
+    }
+
+    function getPoDetailSUM($id)
+    {
+        $sql = 'SELECT sum(qtyprice * price) AS grandtotal FROM po_detail WHERE poid = "' . $id . '"';
+        $query = $this->db->query($sql);
+        $grandtotal = "";
+        if ($query->getNumRows() > 0) {
+            foreach ($query->getResult() as $gt) {
+                $grandtotal = ($gt->grandtotal);
+            }
+        } else {
+            $grandtotal = "0";
+        }
+
+        return $grandtotal;
     }
 }
