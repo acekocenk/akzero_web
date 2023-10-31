@@ -1,7 +1,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h5 class="mt-3"><?= $title; ?></h5>
-        <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('/po/create'); ?>" role="button"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add</a>
+        <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('po/createPo'); ?>" role="button"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add</a>
 
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert">
@@ -67,7 +67,7 @@
         $('#btnAdd').click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: "/po/create",
+                url: "po/createPo",
                 dataType: "json",
                 success: function(response) {
                     $('.formaksi').html(response.create).show();

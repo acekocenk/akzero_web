@@ -29,19 +29,17 @@ class po extends BaseController
     {
         $data = [
             'title' => 'Purchase Order',
-            // 'po' => $this->poModel->poListajax()
-            // 'item' => $this->itemsModel->itemsListajax()
 
         ];
         return view('po/index', $data);
     }
 
+    // Load Data
     public function loaddata()
     {
         if ($this->request->isAJAX()) {
             $data = [
                 'title' => 'List Purchase Order',
-                // 'po' => $this->poModel->poListajax()
             ];
             $msg = [
                 'view' => view('po/view', $data)
@@ -72,7 +70,8 @@ class po extends BaseController
                 $sub_array[] = $row->grandtotal;
                 $sub_array[] = $row->postatus;
                 $sub_array[] = $row->fullname;
-                $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->poid')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->poid')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
+                $sub_array[] = '<a href="/po/edit/' . $row->pono . '" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</a>;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
+                // $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->pono')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
                 $data[] = $sub_array;
             }
             $output = array(
@@ -88,8 +87,8 @@ class po extends BaseController
     public function loadlistpo_detail()
     {
         if ($this->request->isAJAX()) {
-            $pono = $this->request->getVar('pono');
-            $fetch_data = $this->podetailModel->podetailList($pono);
+            $poid = $this->request->getVar('poid');
+            $fetch_data = $this->podetailModel->podetailListajax($poid);
             $data = array();
             $no = 1;
             foreach ($fetch_data as $row) {
@@ -102,6 +101,7 @@ class po extends BaseController
                 $sub_array[] = $row->qty2;
                 $sub_array[] = $row->unit2;
                 $sub_array[] = $row->qtyprice;
+                $sub_array[] = $row->qtypriceunit;
                 $sub_array[] = $row->price;
                 $sub_array[] = $row->total;
                 $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->id')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->id')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
@@ -116,7 +116,8 @@ class po extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException(' Not Found');
         }
     }
-
+    // End Load Data
+    // Get Data
     public function getItems()
     {
         if ($this->request->isAJAX()) {
@@ -130,14 +131,27 @@ class po extends BaseController
         }
     }
 
+    public function getPO()
+    {
+        if ($this->request->isAJAX()) {
+            $pono = $this->request->getVar('pono');
+            $data = $this->poModel->getPO($pono);
+            if (empty($data)) {
+                throw new \CodeIgniter\Exceptions\PageNotFoundException('product ' . $pono . ' Not Found');
+            }
+            echo json_encode($data);
+        } else {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Not Found');
+        }
+    }
+
     public function getPONO()
     {
         if ($this->request->isAJAX()) {
             $ab = $this->request->getVar('potype');
-            if ($ab <> "") {
+            if (!empty($ab)) {
                 $msg = [
-                    'ab' => $this->request->getVar('potype'),
-                    'pono' => $this->poModel->getPONO($this->request->getVar('potype')),
+                    'pono' => $this->poModel->getPONO($ab),
                 ];
             } else {
                 $msg = [
@@ -149,8 +163,10 @@ class po extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Not Found');
         }
     }
+    // End Get Data
 
-    public function create()
+    // CRUD PO
+    public function createPo()
     {
         $data = [
             'title' => 'Purchase Order Create',
@@ -160,7 +176,21 @@ class po extends BaseController
         return view('po/create', $data);
     }
 
-    public function save()
+    public function editPo($pono)
+    {
+        $data = [
+            'title' => 'Purchase Order Create',
+            'item' => $this->itemsModel->itemsList(),
+            'supplier' => $this->supplierModel->supplierList(),
+            'po' => $this->poModel->poList($pono)
+        ];
+        if (empty($data['po'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Purchase Order ' . $pono . ' Not Found');
+        }
+        return view('po/edit', $data);
+    }
+
+    public function savePo()
     {
         if ($this->request->isAJAX()) {
             $valid = $this->validate([
@@ -176,8 +206,7 @@ class po extends BaseController
                         'required' => '{field} tidak boleh kosong.',
                         'is_unique' => '{field} sudah terpakai.'
                     ]
-                ],
-                'supplierid' => [
+                ], 'supplierid' => [
                     'rules' => 'required',
                     'errors' => [
                         'required' => '{field} tidak boleh kosong.'
@@ -188,13 +217,14 @@ class po extends BaseController
                 $msg = [
                     'error' => [
                         'potype' => validation_show_error('potype'),
-                        'pono' => validation_show_error('pono'),
-                        'supplierid' => validation_show_error('supplierid')
+                        'supplierid' => validation_show_error('supplierid'),
+                        'pono' => validation_show_error('pono')
                     ]
                 ];
             } else {
                 $postatus = "Draft";
                 $userid = user()->id;
+                $podate = date("Y-m-d");
                 $this->poModel->save(
                     [
                         'potype' => $this->request->getVar('potype'),
@@ -219,4 +249,32 @@ class po extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException(' Not Found');
         }
     }
+
+
+    // End CRUD PO
+
+    // CRUD PO Detail
+    public function savePoDetail()
+    {
+        $this->podetailModel->save(
+            [
+                'poid' => $this->request->getVar('addpoid'),
+                'itemcode' => $this->request->getVar('additemcode'),
+                'itemname' => $this->request->getVar('additemname'),
+                'qty' => $this->request->getVar('addqty1'),
+                'unit' => $this->request->getVar('addunit1'),
+                'qty2' => $this->request->getVar('addqty2'),
+                'unit2' => $this->request->getVar('addunit2'),
+                'qtyprice' => $this->request->getVar('addqtyprice'),
+                'qtypriceunit' => $this->request->getVar('addpriceunit'),
+                'price' => $this->request->getVar('addprice'),
+                'total' => $this->request->getVar('addtotal'),
+            ]
+        );
+        $msg = [
+            'sukses' => $this->request->getVar('addpoid') . ' added successfully'
+        ];
+        echo json_encode($msg);
+    }
+    // End CRUD PO Detail
 }

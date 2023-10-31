@@ -41,7 +41,7 @@ class poModel extends Model
         po.terbilang,
         po.postatus FROM po
         LEFT JOIN (select poid, qtyprice * price AS grandtotal FROM po_detail) AS t1 ON t1.poid = po.id 
-        INNER JOIN supplier ON po.supplierid = supplier.id 
+        LEFT JOIN supplier ON po.supplierid = supplier.id 
         INNER JOIN users ON po.usersid = users.id';
         $query = $this->db->query($sql);
         return $query->getResult();
@@ -70,5 +70,30 @@ class poModel extends Model
         }
         date_default_timezone_set('Asia/Jakarta');
         return "BIG" . $tp . date('ym') .  "-" . $kd;
+    }
+
+    function getPO($pono)
+    {
+        $builder = $this->db->table('po');
+        $query = $builder->getWhere(['pono' => $pono]);
+        if ($query->getNumRows() > 0) {
+            foreach ($query->getResult() as $data) {
+                $rsl = array(
+                    'id' => $data->id,
+                    'potype' => $data->potype,
+                    'pono' => $data->pono,
+                    'podate' => $data->podate,
+                    'indate' => $data->indate,
+                    'currency' => $data->currency,
+                    'supplierid' => $data->supplierid,
+                    'usersid' => $data->usersid,
+                    'discount' => $data->discount,
+                    'ppn' => $data->ppn,
+                    'terbilang' => $data->terbilang,
+                    'postatus' => $data->postatus,
+                );
+            }
+        }
+        return $rsl;
     }
 }
