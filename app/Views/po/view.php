@@ -2,7 +2,7 @@
     <div class="card-header py-3">
         <h5 class="mt-3"><?= $title; ?></h5>
         <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('po/createPo'); ?>" role="button"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Add</a>
-
+        <a class="btn btn-primary btn-sm mt-3 mb-3" href="<?= base_url('po/printPo'); ?>" role="button" target="_blank"> <i class="fa-solid fa-circle-plus fa-xl"></i>&nbsp;Print PO</a>
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert">
                 <?= session()->getFlashdata('pesan'); ?>
@@ -45,21 +45,26 @@
 
     function ViewDataTable() {
         dataTablePO = $('#tbPO').DataTable({
-            "processing": true,
+            processing: true,
             // "serverSide": true,
-            "order": [],
-            "ajax": {
+            order: [],
+            ajax: {
                 url: "<?= base_url('po/loadlistpo') ?>",
                 type: "POST",
             },
-            "bPaginate": true,
-            "bInfo": true,
-            "bFilter": true,
-            // "scrollX": true,
-            "autoWidth": true,
-            // "bLengthChange": false,
-            // "pageLength": 5
-            // "ordering": false,
+            bPaginate: true,
+            bInfo: true,
+            bFilter: true,
+            // scrollX: true,
+            autoWidth: true,
+            // bLengthChange: false,
+            // pageLength: 5
+            // ordering: false,
+            columnDefs: [{
+                targets: [7, 8, 9],
+                render: $.fn.dataTable.render.number(',', '.', 4, '', ''),
+                className: "text-right"
+            }, ]
         });
     }
 

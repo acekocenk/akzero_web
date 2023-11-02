@@ -6,7 +6,6 @@ use App\Models\poModel;
 use App\Models\podetailModel;
 use App\Models\itemsModel;
 use App\Models\supplierModel;
-use Kint\Parser\ToStringPlugin;
 
 class po extends BaseController
 {
@@ -14,6 +13,7 @@ class po extends BaseController
     protected $podetailModel;
     protected $supplierModel;
     protected $itemsModel;
+    protected $session;
 
     public function __construct()
     {
@@ -70,7 +70,7 @@ class po extends BaseController
                 $sub_array[] = $row->grandtotal;
                 $sub_array[] = $row->postatus;
                 $sub_array[] = $row->fullname;
-                $sub_array[] = '<a href="/po/edit/' . $row->pono . '" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</a>;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
+                $sub_array[] = '<a href="/po/editpo/' . $row->pono . '" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</a>;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
                 // $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->pono')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
                 $data[] = $sub_array;
             }
@@ -197,12 +197,23 @@ class po extends BaseController
     // End Get Data
 
     // CRUD PO
+    public function printPo()
+    {
+        $data = [
+            'title' => 'Print Purchase Order'
+        ];
+        return view('po/printpo', $data);
+    }
     public function createPo()
     {
         $data = [
+            'poformid' => 'pocreate',
             'title' => 'Purchase Order Create',
             'item' => $this->itemsModel->itemsList(),
             'supplier' => $this->supplierModel->supplierList(),
+            'po' => [
+                'id' => ''
+            ],
         ];
         return view('po/create', $data);
     }
@@ -210,6 +221,7 @@ class po extends BaseController
     public function editPo($pono)
     {
         $data = [
+            'poformid' => 'poedit',
             'title' => 'Purchase Order Create',
             'item' => $this->itemsModel->itemsList(),
             'supplier' => $this->supplierModel->supplierList(),
@@ -218,7 +230,7 @@ class po extends BaseController
         if (empty($data['po'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Purchase Order ' . $pono . ' Not Found');
         }
-        return view('po/edit', $data);
+        return view('po/create', $data);
     }
 
     public function savePo()
@@ -311,7 +323,11 @@ class po extends BaseController
                     ]
                 ];
             } else {
-                $postatus = "New PO";
+                if ($this->request->getVar('postatus') == '' || $this->request->getVar('postatus') == 'Draft') {
+                    $postatus = "New PO";
+                } else {
+                    $postatus = $this->request->getVar('postatus');
+                }
                 $userid = user()->id;
                 $this->poModel->save(
                     [
@@ -359,7 +375,31 @@ class po extends BaseController
             ]
         );
         $msg = [
-            'sukses' => $this->request->getVar('addpoid') . ' added successfully'
+            'sukses' => $this->request->getVar('additemname') . ' added successfully'
+        ];
+        echo json_encode($msg);
+    }
+
+    public function updatePoDetail()
+    {
+        $this->podetailModel->save(
+            [
+                'id' => $this->request->getVar('editid'),
+                'poid' => $this->request->getVar('editpoid'),
+                'itemcode' => $this->request->getVar('edititemcode'),
+                'itemname' => $this->request->getVar('edititemname'),
+                'qty' => $this->request->getVar('editqty1'),
+                'unit' => $this->request->getVar('editunit1'),
+                'qty2' => $this->request->getVar('editqty2'),
+                'unit2' => $this->request->getVar('editunit2'),
+                'qtyprice' => $this->request->getVar('editqtyprice'),
+                'qtypriceunit' => $this->request->getVar('editpriceunit'),
+                'price' => $this->request->getVar('editprice'),
+                'total' => $this->request->getVar('edittotal'),
+            ]
+        );
+        $msg = [
+            'sukses' => $this->request->getVar('edititemname') . ' updated successfully'
         ];
         echo json_encode($msg);
     }

@@ -37,7 +37,7 @@ class poModel extends Model
         users.fullname,
         po.discount,
         po.ppn,
-        COALESCE(t1.grandtotal,0) AS grandtotal, 
+        (COALESCE(t1.grandtotal,0)+((COALESCE(t1.grandtotal,0)*COALESCE(po.ppn,0))/100))-COALESCE(po.discount,0) AS grandtotal,
         po.terbilang,
         po.postatus FROM po
         LEFT JOIN (select poid, SUM(qtyprice * price) AS grandtotal FROM po_detail GROUP BY poid) AS t1 ON t1.poid = po.id 
