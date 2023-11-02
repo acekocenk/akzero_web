@@ -70,7 +70,7 @@ class po extends BaseController
                 $sub_array[] = $row->grandtotal;
                 $sub_array[] = $row->postatus;
                 $sub_array[] = $row->fullname;
-                $sub_array[] = '<a href="/po/editpo/' . $row->pono . '" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</a>;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
+                $sub_array[] = '<a href="/po/printpo/' . $row->pono . '" class="btn btn-primary btn-sm" target="_blank"><i class="fa-solid fa-print"></i>&nbsp;Print</a>;<a href="/po/editpo/' . $row->pono . '" class="btn btn-primary btn-sm"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</a>;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
                 // $sub_array[] = '<button type="button" class="btn btn-primary btn-sm" onclick="' . "edit('$row->pono')" . '"><i class="fa-solid fa-file-pen"></i>&nbsp;Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" onclick="' . "remove('$row->pono')" . '"><i class="fa-solid fa-trash-can"></i>&nbsp;Delete</button>';
                 $data[] = $sub_array;
             }
@@ -197,13 +197,17 @@ class po extends BaseController
     // End Get Data
 
     // CRUD PO
-    public function printPo()
+    public function printPo($pono)
     {
         $data = [
-            'title' => 'Print Purchase Order'
+            'title' => 'Print Purchase Order', 'title' => 'Purchase Order Create',
+            'item' => $this->itemsModel->itemsList(),
+            'supplier' => $this->supplierModel->supplierList(),
+            'po' => $this->poModel->poList($pono)
         ];
         return view('po/printpo', $data);
     }
+
     public function createPo()
     {
         $data = [
