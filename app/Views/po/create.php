@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <form action="javascript:void(0)" method="post" enctype="multipart/form-data" id="frmAddPo">
                         <?= csrf_field(); ?>
+                        <input type="hidden" id="action" name="action">
                         <input type="hidden" id="poid" name="poid">
                         <div class="row mb-3">
                             <div class="col">
@@ -63,8 +64,8 @@
                             <div class="col">
                                 <div class="box-footer" align="right">
                                     <button type="submit" class="btn btn-primary btn-sm" id="btnSavePo" value="save"><i class="fa-solid fa-check"></i>&nbsp;Create PO</button>
-                                    <button type="submit" class="btn btn-primary btn-sm" id="btnSavePo" value="update"><i class="fa-solid fa-check"></i>&nbsp;Process PO</button>
-                                    <button type="button" class="btn btn-primary btn-sm" id="btnEnable" onclick="enableInput()"><i class="fa-solid fa-check"></i>&nbsp;Enable PO</button>
+                                    <button type="submit" class="btn btn-primary btn-sm" id="btnProcessPo" value="update" hidden><i class="fa-solid fa-check"></i>&nbsp;Process PO</button>
+                                    <!-- <button type="button" class="btn btn-primary btn-sm" id="btnEnable" onclick="enableInput()"><i class="fa-solid fa-check"></i>&nbsp;Enable PO</button> -->
                                     <a class="btn btn-danger btn-sm" href="#" role="button" id="btnCancel"><i class="fa-solid fa-xmark"></i>&nbsp;Cancel</a>
                                 </div>
                             </div>
@@ -345,32 +346,35 @@
             getPO();
         });
         getDate();
-        poSave();
+        poSaveUpdate();
         podetailSave();
-        // ViewDataTablePoDetail();
+        ViewDataTablePoDetail();
     });
 
-    function ViewDataTablePoDetail() {
-        var poid = $("#addpoid").val();
-        dataTablePO = $('#tbPODetail').DataTable({
-            "processing": true,
-            // "serverSide": true,
-            "order": [],
-            "ajax": {
-                url: "<?= base_url('po/loadlistpo_detail') ?>",
-                type: "POST",
-                data: {
-                    poid: poid
-                },
-                dataType: "json",
-            },
-            "bPaginate": true,
-            "bInfo": true,
-            "bFilter": true,
-            "autoWidth": true,
-            "bDestroy": true,
-        });
+    function getDate() {
+        var date = new Date();
 
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+        document.getElementById("podate").value = today;
+        document.getElementById("indate").value = today;
+    }
+
+    function calGt() {
+        var dis = parseFloat($('#discount').val());
+        var ppn = parseFloat($('#ppn').val());
+        var gt = parseFloat($('#grandtotal').val());
+
+        ppn = (ppn * gt) / 100;
+        gt = (gt - dis) + ppn;
+
+        alert(gt.toFixed(4));
     }
 
     function getPO() {
@@ -387,10 +391,6 @@
                     $('#poid').val(data.id);
                     $('#addpoid').val(data.id);
                     $('#addpono').val(data.pono);
-                    // document.getElementById("poid").value = data.id;
-                    // document.getElementById("addpoid").value = data.id;
-                    // document.getElementById("addpono").value = data.pono;
-                    // alert(data.id);
                 });
             }
         });
@@ -446,30 +446,118 @@
         });
     }
 
-    function getDate() {
-        var date = new Date();
+    function poSaveUpdate() {
+        $('#btnSavePo').click(function() {
+            $('#metode').val('save');
+            $url = '<?= base_url('po/savePo') ?>';
+            $btn = '#btnSavePo';
+            $html = '<i class="fa-solid fa-check"></i>&nbsp;Create PO';
+            $metode = 'save';
+        });
 
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+        $('#btnProcessPo').click(function() {
+            $('#metode').val('update');
 
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
+            $('#potype').removeAttr('disabled');
+            $('#pono').attr('readonly', false);
+            $('#supplierid').removeAttr('disabled');
 
-        var today = year + "-" + month + "-" + day;
-        document.getElementById("podate").value = today;
-        document.getElementById("indate").value = today;
-    }
+            $url = '<?= base_url('po/updatePo') ?>';
+            $btn = '#btnProcessPo';
+            $html = '<i class="fa-solid fa-check"></i>&nbsp;Process PO';
+            $metode = 'update';
+        });
 
-    function calGt() {
-        var dis = parseFloat($('#discount').val());
-        var ppn = parseFloat($('#ppn').val());
-        var gt = parseFloat($('#grandtotal').val());
+        $('#frmAddPo').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "post",
+                url: $url,
+                data: new FormData(this), //$(this).serialize(),
+                dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function(xhr) {
+                    $($btn).attr('disable', 'disable');
+                    $($btn).html('<i class="fa fa-spin fa-spinner"</i>');
+                },
+                complete: function() {
+                    $($btn).removeAttr('disable');
+                    $($btn).html($html);
+                },
+                success: function(response) {
+                    if (response.error) {
+                        // alert("Form Submited Successfully");
+                        // Validasi---------------------------------------
+                        if (response.error.potype) {
+                            $('#potype').addClass('is-invalid');
+                            $('#errorPoType').html(response.error.potype);
+                        } else {
+                            $('#potype').removeClass('is-invalid');
+                            $('#errorPoType').html('');
+                        }
 
-        ppn = (ppn * gt) / 100;
-        gt = (gt - dis) + ppn;
+                        if (response.error.pono) {
+                            $('#pono').addClass('is-invalid');
+                            $('#errorPoNo').html(response.error.pono);
+                            if ($metode == 'save') {
+                                getPONO();
+                                $('#pono').removeClass('is-invalid');
+                                $('#errorPoNo').html('');
+                                $('#btnSavePo').click();
+                            }
+                        } else {
+                            $('#pono').removeClass('is-invalid');
+                            $('#errorPoNo').html('');
+                        }
 
-        alert(gt.toFixed(4));
+                        if (response.error.supplierid) {
+                            $('#supplierid').addClass('is-invalid');
+                            $('#errorSupplier').html(response.error.supplierid);
+                        } else {
+                            $('#supplierid').removeClass('is-invalid');
+                            $('#errorSupplier').html('');
+                        }
+                        // endValidasi------------------------------------
+                    } else {
+                        if ($metode == 'save') {
+                            getPO();
+                            $('#potype').removeClass('is-invalid');
+                            $('#pono').removeClass('is-invalid');
+                            $('#supplierid').removeClass('is-invalid');
+                            $('#potype').attr('disabled', 'disabled');
+                            $('#pono').attr('readonly', true);
+                            $('#supplierid').attr('disabled', 'disabled');
+                            $('#btnSavePo').attr('hidden', true);
+                            $('#btnProcessPo').attr('hidden', false);
+                            $('#btnAddDetail').removeAttr('disabled');
+                        } else if ($metode == 'update') {
+                            $("#frmAddPo").trigger("reset");
+                            $("#frmAddPoDetail").trigger("reset");
+                            getDate();
+                            var dataTable = $('#tbPODetail').DataTable();
+                            dataTable.rows().remove().draw();
+                            $('#btnSavePo').attr('hidden', false);
+                            $('#btnProcessPo').attr('hidden', true);
+                            $('#btnAddDetail').attr('disabled', 'disabled');
+                        }
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.sukses,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            });
+            return false;
+        });
     }
 
     // function getItems() {
@@ -488,11 +576,11 @@
     //     });
     // }
 
-    function enableInput() {
-        $('#potype').removeAttr('disabled');
-        $('#pono').attr('readonly', false);
-        $('#supplierid').removeAttr('disabled');
-    }
+    // function enableInput() {
+    //     $('#potype').removeAttr('disabled');
+    //     $('#pono').attr('readonly', false);
+    //     $('#supplierid').removeAttr('disabled');
+    // }
 
     function poSave() {
         $('#frmAddPo').submit(function(e) {
@@ -503,7 +591,7 @@
 
             // $.ajax({
             //     type: "post",
-            //     url: "<?= base_url('po/savePo') ?>",
+            //     url: "<//?= base_url('po/savePo') ?>",
             //     data: new FormData(this), //$(this).serialize(),
             //     dataType: "json",
             //     contentType: false,
@@ -589,7 +677,7 @@
     //         e.preventDefault();
     //         $.ajax({
     //             type: "post",
-    //             url: "<?= base_url('po/updatePo') ?>",
+    //             url: "<//?= base_url('po/updatePo') ?>",
     //             data: new FormData(this), //$(this).serialize(),
     //             dataType: "json",
     //             contentType: false,
@@ -682,6 +770,30 @@
     // }
 
     // PO Detail
+    function ViewDataTablePoDetail() {
+        var poid = $("#addpoid").val();
+        if (poid != '') {
+            dataTablePO = $('#tbPODetail').DataTable({
+                "processing": true,
+                // "serverSide": true,
+                "order": [],
+                "ajax": {
+                    url: "<?= base_url('po/loadlistpo_detail') ?>",
+                    type: "POST",
+                    data: {
+                        poid: poid
+                    },
+                    dataType: "json",
+                },
+                "bPaginate": true,
+                "bInfo": true,
+                "bFilter": true,
+                "autoWidth": true,
+                "bDestroy": true,
+            });
+        }
+    }
+
     function getItemName() {
         $("#additemname").val($("#additemcode option:selected").text());
     }
@@ -779,7 +891,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "post",
-                    url: "/po/deletePoDetail",
+                    url: "<?= base_url('/po/deletePoDetail') ?>",
                     data: {
                         id: id
                     },

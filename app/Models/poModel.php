@@ -40,7 +40,7 @@ class poModel extends Model
         COALESCE(t1.grandtotal,0) AS grandtotal, 
         po.terbilang,
         po.postatus FROM po
-        LEFT JOIN (select poid, qtyprice * price AS grandtotal FROM po_detail) AS t1 ON t1.poid = po.id 
+        LEFT JOIN (select poid, SUM(qtyprice * price) AS grandtotal FROM po_detail GROUP BY poid) AS t1 ON t1.poid = po.id 
         LEFT JOIN supplier ON po.supplierid = supplier.id 
         INNER JOIN users ON po.usersid = users.id';
         $query = $this->db->query($sql);
