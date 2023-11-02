@@ -7,8 +7,19 @@
     <div class="card border-secondary mb-3" style="max-width: 70rem;">
         <div class="card-header">
             <div class="row">
-                <div class="col-sm-2" align="Left">item Code</div>
-                <div class="col-sm-8" align="Left">PT. BUMI INDAH GLOBAL </div>
+                <div class="col-sm-2" align="Left">
+                    <img src="/img/items/default.png" class="img-thumbnail img-preview">
+                </div>
+                <div class="col-sm-8" align="Left">
+                    <!-- <div class="row mb-5"></div> -->
+                    <div class="row">
+                        <h1><b>PT. BUMI INDAH GLOBAL</b></h1>
+                    </div>
+                    <div class="row mb-3"></div>
+                    <div class="row">
+                        <h4>PURCHASE ORDER</h4>
+                    </div>
+                </div>
             </div>
         </div>
         <div class=" card-body text-secondary">
