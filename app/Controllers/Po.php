@@ -203,7 +203,7 @@ class po extends BaseController
             'title' => 'Print Purchase Order', 'title' => 'Purchase Order Create',
             'item' => $this->itemsModel->itemsList(),
             'supplier' => $this->supplierModel->supplierList(),
-            'po' => $this->poModel->poList($pono)
+            'po' => $this->poModel->poListPrint($pono)
         ];
         return view('po/printpo', $data);
     }

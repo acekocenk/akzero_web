@@ -46,6 +46,14 @@ class poModel extends Model
         $query = $this->db->query($sql);
         return $query->getResult();
     }
+    public function poListPrint($pono)
+    {
+        $sql = 'SELECT po.id, potype, pono, podate, indate, currency, suppliername, `address`, telp, usersid, discount, ppn, terbilang, postatus FROM po
+        INNER JOIN supplier ON po.supplierid = supplier.id WHERE pono = "' . $pono . '";';
+        $builder = $this->db->query($sql);
+        $query = $this->db->query($sql);
+        return $query->getResult();
+    }
 
     public function getPONO($potype)
     {
